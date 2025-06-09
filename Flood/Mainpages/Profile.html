@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HydroAlert Profile</title>
+  <link rel="stylesheet" href="../Stlye/info.css" />
+  <style>
+    .profile-container {
+      max-width: 1100px;
+      margin: 20px auto;
+      padding: 40px;
+      background: rgba(4, 78, 84, 0.75);
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(0, 255, 255, 0.1);
+      backdrop-filter: blur(8px);
+    }
+
+    .profile-header {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      margin-bottom: 50px;
+    }
+
+    .profile-header img {
+      width: 160px;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid #00cfff;
+      box-shadow: 0 0 20px rgba(0, 207, 255, 0.3);
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .profile-header img:hover {
+      transform: scale(1.05);
+    }
+
+    .profile-info {
+      flex: 1;
+    }
+
+    .profile-info h2 {
+      margin-bottom: 20px;
+      font-size: 2rem;
+      color: #caf0f8;
+    }
+
+    .profile-info input {
+      width: 100%;
+      margin-bottom: 15px;
+      padding: 12px 15px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 10px;
+      background-color: rgba(255, 255, 255, 0.15);
+      color: #ffffff;
+      outline: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .profile-info input:focus {
+      background-color: rgba(255, 255, 255, 0.25);
+    }
+
+    .save-btn {
+      padding: 12px 25px;
+      background: #00cfff;
+      color: #044e54;
+      border: none;
+      font-weight: bold;
+      font-size: 1rem;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s;
+      box-shadow: 0 0 10px rgba(0, 207, 255, 0.4);
+    }
+
+    .save-btn:hover {
+      background: #00b4e0;
+    }
+
+    .activity-section {
+      margin-top: 40px;
+      padding: 30px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0, 207, 255, 0.1);
+    }
+
+    .activity-section h3 {
+      margin-bottom: 20px;
+      font-size: 1.5rem;
+      color: #caf0f8;
+    }
+
+    .activity-section p {
+      font-size: 1.1rem;
+      margin: 10px 0;
+    }
+
+    .history-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    .history-table th,
+    .history-table td {
+      padding: 14px 16px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background-color: rgba(255, 255, 255, 0.06);
+      text-align: center;
+      font-size: 1rem;
+    }
+
+    .history-table th {
+      background-color: #007bff;
+      color: #fff;
+    }
+
+    .history-table tbody tr:hover {
+      background-color: rgba(0, 255, 255, 0.08);
+    }
+
+    @media screen and (max-width: 768px) {
+      .profile-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .profile-header img {
+        margin-bottom: 20px;
+      }
+    }
+
+    .activity-wrapper {
+      display: flex;
+      gap: 30px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+
+    .activity-section {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .summary {
+      max-width: 35%;
+    }
+
+    .history {
+      flex: 1;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="header">
+    <button id="homeBtn" onclick="location.href='Home.html';" aria-label="Home">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
+        style="width: 34px; height: 34px;">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3 9l9-7 9 7v12a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 22V12h6v10" />
+      </svg>
+    </button>
+    <div class="app-name">Welcome to HydroAlert</div>
+    <div class="auth-buttons">
+    </div>
+  </div>
+  <div class="profile-container">
+    <div class="profile-header">
+      <label for="profilePic">
+        <img id="previewPic" src="https://i.ibb.co/zZhDp6T/default-avatar.png" alt="Profile Picture" />
+      </label>
+      <input type="file" id="profilePic" accept="image/*" style="display: none" />
+
+      <div class="profile-info">
+        <h2>Your Profile</h2>
+        <input type="text" placeholder="Username" value="HydroUser01" />
+        <input type="email" placeholder="Email" value="user@email.com" />
+        <button class="save-btn">Save Changes</button>
+      </div>
+    </div>
+
+    <div class="activity-wrapper">
+      <div class="activity-section summary">
+        <h3>Activity Summary</h3>
+        <p>Total Flood Detections: <strong>12</strong></p>
+        <p>Total Water Quality Tests: <strong>8</strong></p>
+        <p>Last Active: <strong>2025-06-03</strong></p>
+      </div>
+
+      <div class="activity-section history">
+        <h3>Detection History</h3>
+        <table class="history-table">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Type</th>
+              <th>Location</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>2025-06-01</td>
+              <td>Flood</td>
+              <td>Kolkata</td>
+              <td>Warning Issued</td>
+            </tr>
+            <tr>
+              <td>2025-05-29</td>
+              <td>Water Quality</td>
+              <td>Howrah</td>
+              <td>Contaminated</td>
+            </tr>
+            <tr>
+              <td>2025-05-25</td>
+              <td>Flood</td>
+              <td>Durgapur</td>
+              <td>Safe</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+
+  <script>
+    document.getElementById("profilePic").addEventListener("change", function (event) {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          document.getElementById("previewPic").src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+  </script>
+</body>
+
+</html>
