@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flood Detection - HydroAlert</title>
+  <link rel="stylesheet" href="../Stlye/info.css" />
+<link rel="stylesheet" href="../Stlye/FloodDetection.css" />
+</head>
+
+<body>
+  <div class="info-container">
+    <div class="header">
+      <button id="homeBtn" onclick="location.href='Home.html';" aria-label="Home">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
+          style="width: 34px; height: 34px;">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 9l9-7 9 7v12a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 22V12h6v10" />
+        </svg>
+      </button>
+      <div class="app-name">Welcome to HydroAlert</div>
+      <div class="auth-buttons">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width: 44px; height: 44px;" onclick="location.href='Profile.html';" aria-label="Profile">
+        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" />
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 14c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-3.31 0-10 1.67-10 5v2h20v-2c0-3.33-6.69-5-10-5z" transform="scale(0.8) translate(3, 0.1)" />
+    </svg>
+</div>
+
+    </div>
+
+
+
+    <div class="flood-detect-container">
+      <h2>🌊 Flood Detection System</h2>
+
+      <div class="input-panel">
+        <label for="mediaType">Select Type:</label>
+        <select id="mediaType">
+          <option value="image">🖼️ Image</option>
+          <option value="video">🎥 Video</option>
+        </select>
+
+        <label for="uploadFile">Upload File:</label>
+        <input type="file" id="uploadFile" accept="image/*,video/*" />
+
+        <button onclick="detectFlood()">🚨 Run Detection</button>
+      </div>
+
+      <div class="output-panel">
+        <div id="output" style="display:none;"></div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="wave-container" aria-hidden="true">
+    <div class="wave" aria-hidden="true">
+      <svg class="wave-svg" viewBox="0 0 1200 100" preserveAspectRatio="none">
+        <path fill="#044e54" fill-opacity="0.6"
+          d="M0 67 C 150 100 350 10 600 70 C 850 130 1050 50 1200 80 L1200 120 L0 120 Z"></path>
+      </svg><svg class="wave-svg" viewBox="0 0 1200 100" preserveAspectRatio="none">
+        <path fill="#6bc4cb" fill-opacity="0.5"
+          d="M0 77 C 200 100 400 5 650 70 C 900 140 1100 60 1200 85 L1200 120 L0 120 Z"></path>
+      </svg><svg class="wave-svg" viewBox="0 0 1200 100" preserveAspectRatio="none">
+        <path fill="#044e54" fill-opacity="0.6"
+          d="M0 67 C 150 100 350 10 600 70 C 850 130 1050 50 1200 80 L1200 120 L0 120 Z"></path>
+      </svg><svg class="wave-svg" viewBox="0 0 1200 100" preserveAspectRatio="none">
+        <path fill="#6bc4cb" fill-opacity="0.5"
+          d="M0 77 C 200 100 400 5 650 70 C 900 140 1100 60 1200 85 L1200 120 L0 120 Z"></path>
+      </svg>
+    </div>
+    <div class="wave" aria-hidden="true"><svg class="wave-svg" viewBox="0 0 1200 100" preserveAspectRatio="none">
+        <path fill="#044e54" fill-opacity="0.6"
+          d="M0 67 C 150 100 350 10 600 70 C 850 130 1050 50 1200 80 L1200 120 L0 120 Z"></path>
+      </svg><svg class="wave-svg" viewBox="0 0 1200 100" preserveAspectRatio="none">
+        <path fill="#6bc4cb" fill-opacity="0.5"
+          d="M0 77 C 200 100 400 5 650 70 C 900 140 1100 60 1200 85 L1200 120 L0 120 Z"></path>
+      </svg><svg class="wave-svg" viewBox="0 0 1200 100" preserveAspectRatio="none">
+        <path fill="#044e54" fill-opacity="0.6"
+          d="M0 67 C 150 100 350 10 600 70 C 850 130 1050 50 1200 80 L1200 120 L0 120 Z"></path>
+      </svg></div>
+    <div class="wave" aria-hidden="true"><svg class="wave-svg" viewBox="0 0 1200 100" preserveAspectRatio="none">
+        <path fill="#044e54" fill-opacity="0.6"
+          d="M0 67 C 150 100 350 10 600 70 C 850 130 1050 50 1200 80 L1200 120 L0 120 Z"></path>
+      </svg><svg class="wave-svg" viewBox="0 0 1200 100" preserveAspectRatio="none">
+        <path fill="#6bc4cb" fill-opacity="0.5"
+          d="M0 77 C 200 100 400 5 650 70 C 900 140 1100 60 1200 85 L1200 120 L0 120 Z"></path>
+      </svg><svg class="wave-svg" viewBox="0 0 1200 100" preserveAspectRatio="none">
+        <path fill="#044e54" fill-opacity="0.6"
+          d="M0 67 C 150 100 350 10 600 70 C 850 130 1050 50 1200 80 L1200 120 L0 120 Z"></path>
+      </svg></div>
+  </div>
+  <script>
+    function detectFlood() {
+      const media = document.getElementById("mediaType").value;
+      const fileInput = document.getElementById("uploadFile");
+      const output = document.getElementById("output");
+
+      if (!fileInput.files.length) {
+        alert("Please upload a " + media + " file.");
+        return;
+      }
+
+      const isFloodDetected = Math.random() > 0.5;
+      output.style.display = "block";
+
+      output.innerHTML = isFloodDetected
+        ? `<h3 class="yes"> <span class="icon">⚠️</span> Flood Detected: <strong>YES</strong></h3>
+           <div class="advice">
+             <strong>What to Do:</strong>
+             <ul>
+               <li>Move to higher ground immediately.</li>
+               <li>Stay tuned to weather alerts.</li>
+               <li>Turn off gas, water, and electricity if advised.</li>
+             </ul>
+             <strong>What NOT to Do:</strong>
+             <ul>
+               <li>Do not walk or drive through flood waters.</li>
+               <li>Do not delay evacuation if ordered.</li>
+             </ul>
+           </div>`
+        : `<h3 class="no"><span class="icon">✅</span> Flood Detected: <strong>NO</strong></h3>
+           <p>The area appears safe. Remain cautious and monitor updates for changes in weather conditions.</p>`;
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,242 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  min-height: 200vh;
+  background: linear-gradient(300deg, #044e54 0%, #6bc4cb 100%);
+  overflow-x: hidden;
+  font-family: 'Times New Roman', Times, serif;
+  color: #e0f7fa;
+  user-select: none;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 70px;
+  transition: margin-left 0.3s ease;
+  margin-left: 0;
+}
+
+.info-container{
+  position: absolute;
+  z-index: 1000;
+}
+
+.wave-container {
+  position: absolute;
+  width: 100%;
+  height: 45vh;
+  overflow: hidden;
+  user-select: none;
+  display: block;
+}
+
+/* Make each .wave layer absolutely stacked on top of each other */
+.wave {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+svg.wave-svg {
+  position: fixed;
+  width: 200%;
+  height: 250px;
+  animation: wave-animation 15s ease-in-out infinite;
+  user-select: none;
+  pointer-events: none;
+}
+
+svg.wave-svg:nth-child(2) {
+  animation-delay: -6s;
+  opacity: 0.7;
+  height: 230px;
+}
+
+svg.wave-svg:nth-child(3) {
+  animation-delay: -3s;
+  opacity: 0.5;
+}
+
+@keyframes wave-animation {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-25%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 60px;
+  width: 100%;
+  background: rgba(4, 78, 84, 0.75);
+  backdrop-filter: saturate(180%) blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 50px 0 60px;
+  z-index: 1500;
+  user-select: none;
+}
+
+.app-name {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+
+.auth-buttons{
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  user-select: none;
+  
+}
+
+
+.header #homeBtn {
+  color: white;
+  border: none;
+  font-size: 1.5rem;
+  border-radius: 6px;
+  background-color: rgba(6, 113, 122, 0.75);
+  cursor: pointer;
+  user-select: none;
+  margin-left: -2.5%;
+}
+
+.info-block {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  margin-bottom: 40px;
+}
+
+/* For text content within info section */
+.info-text {
+  flex: 1 1 400px;
+  color: #e0f7fa;
+}
+
+/* Style for images next to text */
+.info-block img {
+  flex: 0 0 350px;
+  width: 30%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+  user-select: none;
+}
+
+/* Content Area */
+.content {
+  max-width: 960px;
+  margin: 0 auto;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  padding: 30px 40px;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+  user-select: text;
+}
+
+.content h2 {
+  font-weight: 700;
+  font-size: 1.6rem;
+  margin-bottom: 15px;
+  text-shadow: 0 0 8px #00cfff;
+  color: #caf0f8;
+}
+
+.content p {
+  line-height: 1.6;
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  color: #d0f0f7;
+}
+
+.content ul {
+  list-style-type: disc;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  color: #d0f0f7;
+  font-size: 1.2rem;
+}
+
+.content ul li {
+  margin-bottom: 8px;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 10px;
+  margin-top: 10%;
+}
+
+.gallery-item {
+  text-align: center;
+  margin-top: -15%; 
+}
+
+.hidden {
+  display: none; 
+}
+
+.gallery img {
+  width: 90%;
+  height: 60%; 
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.4);
+  user-select: none;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.gallery img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px #00cfff;
+}
+
+.gallery p {
+  color: #d0f0f7; 
+  font-size: 1rem; 
+  margin-top: 5px; 
+}
+
+#toggleBtn{
+  background-color: #044e54;
+  color: #e0f7fa;
+  padding: 5px;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .info-box {
+    flex: 1 1 100%;
+  }
+
+  .content {
+    padding: 20px;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
