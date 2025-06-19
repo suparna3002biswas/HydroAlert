@@ -1,0 +1,160 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  background: linear-gradient(to top, #044e54 0%, #6bc4cb 100%);
+  overflow: auto;  /* Allow scroll if needed */
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #e0f7fa;
+  user-select: none;
+}
+
+h1 {
+  text-align: center;
+  font-weight: 700;
+  font-size: 2.8rem;
+  text-shadow: 0 0 8px #00cfff;
+  pointer-events: none;
+  margin: 20px 0;
+}
+
+/* ✅ Wrapper for chart + calculator */
+.content-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 20px;
+  width: 100%;
+}
+
+/* Chart container */
+.chart-container {
+  flex: 1 1 600px;
+  max-width: 900px;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+#qualityChart {
+  width: 100% !important;
+  height: auto !important;
+  object-fit: cover;
+  display: block;
+  background-color: #fff;
+  border-radius: 8px;
+}
+
+/* Arrows */
+.arrows {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin: 20px 0;
+}
+
+.arrow-button {
+  background-color: #007bff;
+  border: none;
+  color: white;
+  font-size: 24px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s;
+}
+
+.arrow-button:hover {
+  background-color: #0056b3;
+}
+
+.arrow-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+}
+
+/* ✅ Calculator styles */
+.wqi-calculator {
+  flex: 1 1 300px;
+  background: #fff;
+  border: 2px solid #044e54;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  color: #044e54;
+  max-width: 400px;
+}
+
+.wqi-calculator h2 {
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 1.6rem;
+}
+
+.wqi-calculator label {
+  display: block;
+  font-weight: bold;
+  margin-top: 8px;
+  margin-bottom: 4px;
+}
+
+.wqi-calculator input {
+  width: 100%;
+  padding: 8px 12px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.wqi-calculator button {
+  background-color: #044e54;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  width: 100%;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.wqi-calculator button:hover {
+  background-color: #03363d;
+}
+
+#wqiResult {
+  text-align: center;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+/* Remove old positioning of calculator */
+.slider-container {
+  display: none; /* We're not using this anymore, replaced by chart-container */
+}
+
+/* Responsive adjustment */
+@media (max-width: 768px) {
+  .content-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+}
